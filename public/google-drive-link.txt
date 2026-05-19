@@ -1,4 +1,1 @@
-# Paste ONE line: the Google Drive share link to the same PDF (view or download).
-# Example: https://drive.google.com/file/d/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/view?usp=sharing
-#
-# Leave empty or keep only comments until you have the link — the Drive button stays hidden.
+https://drive.google.com/file/d/1P6MVK9ikVn61CmnaJFIi5J_7eXOrPKya/view?usp=drive_link

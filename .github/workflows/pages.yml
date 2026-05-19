@@ -54,6 +54,7 @@ jobs:
               ("", "public/index.html", "public/google-drive-link.txt", "qingdao-zhenghe-sample-2026.pdf"),
               ("timing-kit", "public/timing-kit/index.html", "public/timing-kit/google-drive-link.txt", "choho-timing-kit.pdf"),
               ("automotive-chain", "public/automotive-chain/index.html", "public/automotive-chain/google-drive-link.txt", "choho-automotive-chain-system.pdf"),
+              ("kit-distribucion-choho", "public/kit-distribucion-choho/index.html", "public/kit-distribucion-choho/google-drive-link.txt", "choho-kit-distribucion.pdf"),
           ]
           owner = "${GITHUB_REPOSITORY%/*}"
           repo = "${GITHUB_REPOSITORY#*/}"

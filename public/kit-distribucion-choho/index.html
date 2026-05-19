@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CHOHO · KIT DE DISTRIBUCIÓN</title>
+<style>
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#f4f5f7;color:#1a237e;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:24px}
+.card{background:#fff;padding:32px 36px;border-radius:12px;box-shadow:0 4px 20px rgba(26,35,126,.1);text-align:center;max-width:400px;width:100%}
+h1{font-size:1.15rem;font-weight:800;line-height:1.45;margin-bottom:6px}
+.sub{font-size:0.85rem;color:#666;margin-bottom:24px;line-height:1.5}
+a{display:block;margin:10px 0;padding:14px 16px;border-radius:8px;font-weight:700;font-size:0.9rem;text-decoration:none;transition:background .15s,transform .1s}
+a:hover{transform:translateY(-1px)}
+a.primary{background:#1a237e;color:#fff}
+a.primary:hover{background:#283593}
+a.drive{background:#fff;color:#1a237e;border:1px solid #c5cae9;display:flex;align-items:center;justify-content:center;gap:8px}
+a.drive:hover{background:#e8eaf6}
+a.drive::before{content:"";display:inline-block;width:18px;height:18px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%234285F4' d='M9 42h30l-5-8H14z'/%3E%3Cpath fill='%2334A853' d='M9 42L2 30l7-12h30l7 12-7 12z'/%3E%3Cpath fill='%23FBBC05' d='M24 18l-7-12h14z'/%3E%3Cpath fill='%23EA4335' d='M24 18l14 12H10z'/%3E%3C/svg%3E") center/contain no-repeat}
+a.drive.is--pending{opacity:.55;cursor:not-allowed;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Qingdao CHOHO Industrial Co., Ltd.</h1>
+  <p class="sub">KIT DE DISTRIBUCIÓN CHOHO<br/>Choose how to open the PDF</p>
+  <a class="drive" id="driveBtn" href="#" target="_blank" rel="noopener noreferrer">Download from Google Drive</a>
+  <a class="primary" href="choho-kit-distribucion.pdf" target="_blank" rel="noopener noreferrer">Open PDF directly</a>
+</div>
+<script>
+(function () {
+  var u = "__GOOGLE_DRIVE_URL__";
+  var b = document.getElementById("driveBtn");
+  if (/^https:\/\/drive\.google\.com\//.test(u)) {
+    b.href = u;
+  } else {
+    b.classList.add("is--pending");
+    b.title = "Google Drive link not configured yet";
+  }
+})();
+</script>
+</body>
+</html>

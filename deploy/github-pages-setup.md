@@ -1,6 +1,7 @@
-# GitHub Pages 部署（海外访问）
+# GitHub Pages 部署（海外 · 仅 PDF / 扫码）
 
-阿里云 ECS（国内机房）在海外打开容易慢或卡住；**GitHub Pages** 走全球 CDN，适合给海外同事看地图和 PDF。
+**GitHub Pages 只发布 `public/`（样本 PDF + 扫码页）。**  
+内部地图 `index.html`、`素材/`、`Overseas Market Intelligence/` **不会**上 GitHub，仅走阿里云等内网部署。
 
 ## 一、首次创建仓库并发布
 
@@ -31,9 +32,9 @@ git push -u origin main
 
 | 内容 | URL |
 |------|-----|
-| 地图首页 | https://herb214.github.io/CHOHO_FILES/ |
-| PDF 直链 | https://herb214.github.io/CHOHO_FILES/public/qingdao-zhenghe-sample-2026.pdf |
-| 扫码页 | https://herb214.github.io/CHOHO_FILES/public/sample-qr.html |
+| 入口 | https://herb214.github.io/CHOHO_FILES/ |
+| PDF 直链 | https://herb214.github.io/CHOHO_FILES/qingdao-zhenghe-sample-2026.pdf |
+| 扫码页 | https://herb214.github.io/CHOHO_FILES/sample-qr.html |
 
 Actions 会自动按仓库名生成二维码 PNG（指向 GitHub 上的 PDF）。
 

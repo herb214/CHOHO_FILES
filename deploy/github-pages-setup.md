@@ -21,18 +21,19 @@ git push -u origin main
 
 当前账号：**herb214**，仓库：**CHOHO_FILES**。
 
-3. 在 GitHub 网页：**Settings → Pages → Build and deployment → Source** 选 **GitHub Actions**（不要选 “Deploy from branch” 与 Actions 冲突时以 Actions 为准）。
-4. 等 **Actions** 里 `Deploy GitHub Pages` 跑绿（约 1～3 分钟）。
+3. **在 push 之前或之后立刻做（不做会 404）：**  
+   打开 https://github.com/herb214/CHOHO_FILES/settings/pages  
+   **Build and deployment → Source** 选 **GitHub Actions**（不要选 Deploy from a branch）。
+4. 若 Actions 里 `deploy`  job 曾失败并提示 *Ensure GitHub Pages has been enabled*：完成上一步后，打开 [Actions](https://github.com/herb214/CHOHO_FILES/actions) → 点进失败的那次运行 → **Re-run all jobs**。
+5. 等 **Deploy GitHub Pages** 全部变绿（约 1～3 分钟），再打开 Pages 链接。
 
 ## 二、访问地址
 
-假设用户名为 `YOUR_USER`、仓库名为 `REPO`：
-
 | 内容 | URL |
 |------|-----|
-| 地图首页 | `https://YOUR_USER.github.io/REPO/` |
-| PDF 直链 | `https://YOUR_USER.github.io/REPO/public/qingdao-zhenghe-sample-2026.pdf` |
-| 扫码页 | `https://YOUR_USER.github.io/REPO/public/sample-qr.html` |
+| 地图首页 | https://herb214.github.io/CHOHO_FILES/ |
+| PDF 直链 | https://herb214.github.io/CHOHO_FILES/public/qingdao-zhenghe-sample-2026.pdf |
+| 扫码页 | https://herb214.github.io/CHOHO_FILES/public/sample-qr.html |
 
 Actions 会自动按仓库名生成二维码 PNG（指向 GitHub 上的 PDF）。
 

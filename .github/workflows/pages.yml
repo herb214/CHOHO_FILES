@@ -1,4 +1,4 @@
-# GitHub Pages：仅发布对外入口 + PDF（不含内部地图）
+# GitHub Pages: public entry + PDF only
 name: Deploy GitHub Pages
 
 on:

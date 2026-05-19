@@ -1,6 +1,17 @@
 # 私钥勿入库（技能与脚本中的路径仅作本机约定）
 deploy/*.pem
 
+# 内网/本机情报库（勿推送到 CHOHO_FILES 公开仓）
+/index.html
+/素材/
+/Overseas Market Intelligence/
+/tc-parc-dashboard-hub.html
+/deploy/publish-omi-to-ecs.ps1
+/deploy/ecs-bootstrap-omi.sh
+/deploy/nginx-omi-static.conf
+/deploy/omi-aliyun-deploy.txt
+/deploy/public/
+
 # 大文件 / 本地数据勿入库
 sales_db.dump
 sale_all_countries.csv

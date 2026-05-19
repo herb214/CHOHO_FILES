@@ -8,11 +8,13 @@
 
 | 内容 | URL |
 |------|-----|
-| 入口（英文） | https://herb214.github.io/CHOHO_FILES/ |
-| 扫码页 | https://herb214.github.io/CHOHO_FILES/sample-qr.html |
-| PDF | https://herb214.github.io/CHOHO_FILES/qingdao-zhenghe-sample-2026.pdf |
+| 入口（英文，扫码进入） | https://herb214.github.io/CHOHO_FILES/ |
+| PDF 直链 | https://herb214.github.io/CHOHO_FILES/qingdao-zhenghe-sample-2026.pdf |
+| **打印用二维码 PNG** | 仓库内 `public/entry-qr.png`，或线上 https://herb214.github.io/CHOHO_FILES/entry-qr.png |
 
-Google Drive 按钮：在 `public/google-drive-link.txt` 里粘贴一行分享链接后 `git push`，入口页会显示 **Open on Google Drive**。
+二维码内容 = 入口页 URL（不是 PDF）。入口仅两个按钮：**Download from Google Drive**、**Open PDF directly**。
+
+Google Drive：在 `public/google-drive-link.txt` 粘贴一行分享链接后 `git push`。
 
 Pages 设置：**Settings → Pages → Source → GitHub Actions**。
 

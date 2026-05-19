@@ -1,4 +1,4 @@
-# GitHub Pages：仅发布对外 PDF / 扫码页（不含内部地图与区域报告）
+# GitHub Pages：仅发布对外入口 + PDF（不含内部地图）
 name: Deploy GitHub Pages
 
 on:
@@ -30,8 +30,11 @@ jobs:
           set -e
           mkdir -p _site
           cp -r public/* _site/
-          rm -f _site/google-drive-link.txt
+          rm -f _site/google-drive-link.txt _site/sample-qr.html _site/sample-qr.png
           touch _site/.nojekyll
+          OWNER="${GITHUB_REPOSITORY%/*}"
+          REPO="${GITHUB_REPOSITORY#*/}"
+          ENTRY_URL="https://${OWNER}.github.io/${REPO}/"
           python - <<'PY'
           import pathlib
           drive = "#"
@@ -46,26 +49,22 @@ jobs:
           pathlib.Path("_site/index.html").write_text(
               html.replace("__GOOGLE_DRIVE_URL__", drive), encoding="utf-8"
           )
-          print("Google Drive URL:", drive if drive.startswith("https") else "(hidden)")
+          print("Google Drive URL:", drive if drive.startswith("https") else "(pending)")
           PY
+          echo "Entry URL for QR: ${ENTRY_URL}"
 
-      - name: Generate QR (PDF on GitHub Pages)
+      - name: Generate entry QR (points to landing page)
         run: |
           pip install 'qrcode[pil]' -q
           OWNER="${GITHUB_REPOSITORY%/*}"
           REPO="${GITHUB_REPOSITORY#*/}"
-          PDF_URL="https://${OWNER}.github.io/${REPO}/qingdao-zhenghe-sample-2026.pdf"
+          ENTRY_URL="https://${OWNER}.github.io/${REPO}/"
           python - <<PY
           import qrcode
-          url = "${PDF_URL}"
-          qrcode.make(url, box_size=8, border=2).save("_site/sample-qr.png")
+          url = "${ENTRY_URL}"
+          qrcode.make(url, box_size=10, border=2).save("_site/entry-qr.png")
           print("QR encodes:", url)
           PY
-          if [ -f _site/sample-qr.html ]; then
-            sed -i "s|http://8.136.202.129/public/qingdao-zhenghe-sample-2026.pdf|${PDF_URL}|g" _site/sample-qr.html
-            sed -i "s|/public/qingdao-zhenghe-sample-2026.pdf|/qingdao-zhenghe-sample-2026.pdf|g" _site/sample-qr.html
-            sed -i 's|href="qingdao-zhenghe-sample-2026.pdf"|href="'"${PDF_URL}"'"|g' _site/sample-qr.html
-          fi
 
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -30,7 +30,24 @@ jobs:
           set -e
           mkdir -p _site
           cp -r public/* _site/
+          rm -f _site/google-drive-link.txt
           touch _site/.nojekyll
+          python - <<'PY'
+          import pathlib
+          drive = "#"
+          cfg = pathlib.Path("public/google-drive-link.txt")
+          if cfg.is_file():
+              for line in cfg.read_text(encoding="utf-8").splitlines():
+                  line = line.strip()
+                  if line.startswith("https://drive.google.com/"):
+                      drive = line
+                      break
+          html = pathlib.Path("_site/index.html").read_text(encoding="utf-8")
+          pathlib.Path("_site/index.html").write_text(
+              html.replace("__GOOGLE_DRIVE_URL__", drive), encoding="utf-8"
+          )
+          print("Google Drive URL:", drive if drive.startswith("https") else "(hidden)")
+          PY
 
       - name: Generate QR (PDF on GitHub Pages)
         run: |

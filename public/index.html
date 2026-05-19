@@ -1,22 +1,42 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>青岛征和 · 2026 样本</title>
+<title>CHOHO · 2026 Product Sample</title>
 <style>
-body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:#f4f5f7;color:#1a237e;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:24px}
-.card{background:#fff;padding:28px 32px;border-radius:12px;box-shadow:0 4px 20px rgba(26,35,126,.1);text-align:center;max-width:360px}
-h1{font-size:1.1rem;margin-bottom:16px}
-a{display:block;margin:10px 0;padding:12px 16px;border-radius:8px;background:#1a237e;color:#fff;text-decoration:none;font-weight:700}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#f4f5f7;color:#1a237e;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:24px}
+.card{background:#fff;padding:32px 36px;border-radius:12px;box-shadow:0 4px 20px rgba(26,35,126,.1);text-align:center;max-width:400px;width:100%}
+h1{font-size:1.15rem;font-weight:800;line-height:1.45;margin-bottom:6px}
+.sub{font-size:0.85rem;color:#666;margin-bottom:22px;line-height:1.5}
+a{display:block;margin:10px 0;padding:12px 16px;border-radius:8px;background:#1a237e;color:#fff;text-decoration:none;font-weight:700;font-size:0.9rem}
+a:hover{background:#283593}
 a.secondary{background:#fff;color:#1a237e;border:1px solid #c5cae9}
+a.secondary:hover{background:#e8eaf6}
+a.drive{background:#fff;color:#1a237e;border:1px solid #c5cae9;display:flex;align-items:center;justify-content:center;gap:8px}
+a.drive::before{content:"";display:inline-block;width:18px;height:18px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%234285F4' d='M9 42h30l-5-8H14z'/%3E%3Cpath fill='%2334A853' d='M9 42L2 30l7-12h30l7 12-7 12z'/%3E%3Cpath fill='%23FBBC05' d='M24 18l-7-12h14z'/%3E%3Cpath fill='%23EA4335' d='M24 18l14 12H10z'/%3E%3C/svg%3E") center/contain no-repeat}
+a.hidden{display:none}
+.note{font-size:0.72rem;color:#999;margin-top:16px;line-height:1.45}
 </style>
 </head>
 <body>
 <div class="card">
-  <h1>青岛征和工业股份有限公司<br/>样本（2026）</h1>
-  <a href="sample-qr.html">扫码页（含二维码）</a>
-  <a class="secondary" href="qingdao-zhenghe-sample-2026.pdf">直接打开 PDF</a>
+  <h1>Qingdao CHOHO Industrial Co., Ltd.</h1>
+  <p class="sub">Product sample catalog · 2026</p>
+  <a href="sample-qr.html">Scan QR code</a>
+  <a class="secondary" href="qingdao-zhenghe-sample-2026.pdf" target="_blank" rel="noopener noreferrer">Download PDF (this site)</a>
+  <a class="drive secondary hidden" id="driveBtn" href="#" target="_blank" rel="noopener noreferrer">Open on Google Drive</a>
+  <p class="note">For the best experience overseas, use Google Drive or the QR page if the direct PDF is slow.</p>
 </div>
+<script>
+(function () {
+  var u = "__GOOGLE_DRIVE_URL__";
+  if (/^https:\/\/drive\.google\.com\//.test(u)) {
+    var b = document.getElementById("driveBtn");
+    b.href = u;
+    b.classList.remove("hidden");
+  }
+})();
+</script>
 </body>
 </html>

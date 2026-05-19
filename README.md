@@ -10,6 +10,6 @@ Public brochures on **GitHub Pages** — English entry pages, optional direct PD
 
 Each QR encodes the **entry URL** (not the PDF). Each entry has **Download from Google Drive** and **Open PDF directly**.
 
-Google Drive links live in each folder’s `google-drive-link.txt`. TIMING KIT (~350 MB) is **not** hosted on GitHub; “Open PDF directly” uses Google Drive on that entry.
+Google Drive links live in each folder’s `google-drive-link.txt`. TIMING KIT direct PDF: `public/timing-kit/choho-timing-kit.pdf` (compressed from source).
 
 **Pages:** Settings → Pages → Source → **GitHub Actions**.

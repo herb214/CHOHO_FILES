@@ -28,42 +28,54 @@ jobs:
       - name: Assemble public-only site
         run: |
           set -e
+          pip install 'qrcode[pil]' -q
           mkdir -p _site
           cp -r public/* _site/
-          rm -f _site/google-drive-link.txt _site/sample-qr.html _site/sample-qr.png
+          find _site -name 'google-drive-link.txt' -delete
+          rm -f _site/sample-qr.html _site/sample-qr.png
           touch _site/.nojekyll
           OWNER="${GITHUB_REPOSITORY%/*}"
           REPO="${GITHUB_REPOSITORY#*/}"
-          ENTRY_URL="https://${OWNER}.github.io/${REPO}/"
+          BASE="https://${OWNER}.github.io/${REPO}"
           python - <<'PY'
           import pathlib
-          drive = "#"
-          cfg = pathlib.Path("public/google-drive-link.txt")
-          if cfg.is_file():
+          import qrcode
+
+          def read_drive(cfg: pathlib.Path) -> str:
+              if not cfg.is_file():
+                  return "#"
               for line in cfg.read_text(encoding="utf-8").splitlines():
                   line = line.strip()
                   if line.startswith("https://drive.google.com/"):
-                      drive = line
-                      break
-          html = pathlib.Path("_site/index.html").read_text(encoding="utf-8")
-          pathlib.Path("_site/index.html").write_text(
-              html.replace("__GOOGLE_DRIVE_URL__", drive), encoding="utf-8"
-          )
-          print("Google Drive URL:", drive if drive.startswith("https") else "(pending)")
-          PY
-          echo "Entry URL for QR: ${ENTRY_URL}"
+                      return line
+              return "#"
 
-      - name: Generate entry QR (points to landing page)
-        run: |
-          pip install 'qrcode[pil]' -q
-          OWNER="${GITHUB_REPOSITORY%/*}"
-          REPO="${GITHUB_REPOSITORY#*/}"
-          ENTRY_URL="https://${OWNER}.github.io/${REPO}/"
-          python - <<PY
-          import qrcode
-          url = "${ENTRY_URL}"
-          qrcode.make(url, box_size=10, border=2).save("_site/entry-qr.png")
-          print("QR encodes:", url)
+          entries = [
+              ("", "public/index.html", "public/google-drive-link.txt", "qingdao-zhenghe-sample-2026.pdf"),
+              ("timing-kit", "public/timing-kit/index.html", "public/timing-kit/google-drive-link.txt", "choho-timing-kit.pdf"),
+              ("automotive-chain", "public/automotive-chain/index.html", "public/automotive-chain/google-drive-link.txt", "choho-automotive-chain-system.pdf"),
+          ]
+          owner = "${GITHUB_REPOSITORY%/*}"
+          repo = "${GITHUB_REPOSITORY#*/}"
+          base = f"https://{owner}.github.io/{repo}"
+
+          for slug, src_html, src_drive, pdf_name in entries:
+              drive = read_drive(pathlib.Path(src_drive))
+              site_dir = pathlib.Path("_site") / slug if slug else pathlib.Path("_site")
+              site_html = site_dir / "index.html"
+              if not site_html.is_file():
+                  continue
+              pdf_site = site_dir / pdf_name
+              pdf_href = pdf_name if pdf_site.is_file() else drive
+              html = site_html.read_text(encoding="utf-8")
+              html = html.replace("__GOOGLE_DRIVE_URL__", drive)
+              html = html.replace("__PDF_DIRECT_HREF__", pdf_href)
+              site_html.write_text(html, encoding="utf-8")
+              entry_url = f"{base}/" if not slug else f"{base}/{slug}/"
+              qrcode.make(entry_url, box_size=10, border=2).save(site_dir / "entry-qr.png")
+              print(f"Entry: {entry_url}")
+              print(f"  Drive: {drive if drive.startswith('https') else '(pending)'}")
+              print(f"  PDF direct: {pdf_href}")
           PY
 
       - uses: actions/upload-pages-artifact@v3

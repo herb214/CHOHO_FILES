@@ -1,15 +1,15 @@
 # CHOHO_FILES
 
-Public sample catalog (2026) on **GitHub Pages** — English entry page, PDF, and print QR.
+Public brochures on **GitHub Pages** — English entry pages, optional direct PDF, print QR per product.
 
-| Item | URL |
-|------|-----|
-| Entry (scan QR here) | https://herb214.github.io/CHOHO_FILES/ |
-| PDF direct link | https://herb214.github.io/CHOHO_FILES/qingdao-zhenghe-sample-2026.pdf |
-| Print QR PNG | `public/entry-qr.png` or https://herb214.github.io/CHOHO_FILES/entry-qr.png |
+| Product | Entry URL | Print QR |
+|---------|-----------|----------|
+| Industrial Group Brochure | https://herb214.github.io/CHOHO_FILES/ | `public/entry-qr.png` |
+| CHOHO TIMING KIT | https://herb214.github.io/CHOHO_FILES/timing-kit/ | `public/timing-kit/entry-qr.png` |
+| CHOHO Automotive Chain System | https://herb214.github.io/CHOHO_FILES/automotive-chain/ | `public/automotive-chain/entry-qr.png` |
 
-The QR encodes the **entry URL** (not the PDF). The entry offers two actions: **Download from Google Drive** and **Open PDF directly**.
+Each QR encodes the **entry URL** (not the PDF). Each entry has **Download from Google Drive** and **Open PDF directly**.
 
-**Google Drive:** paste one share link (`https://drive.google.com/...`) into `public/google-drive-link.txt`, then `git push`.
+Google Drive links live in each folder’s `google-drive-link.txt`. TIMING KIT (~350 MB) is **not** hosted on GitHub; “Open PDF directly” uses Google Drive on that entry.
 
-**Pages:** Settings → Pages → Source → **GitHub Actions**. Pushes under `public/**` trigger deploy (see `.github/workflows/pages.yml`).
+**Pages:** Settings → Pages → Source → **GitHub Actions**.

@@ -11,6 +11,7 @@ deploy/*.pem
 /deploy/nginx-omi-static.conf
 /deploy/omi-aliyun-deploy.txt
 /deploy/public/
+/public/timing-kit/choho-timing-kit.pdf
 
 # 大文件 / 本地数据勿入库
 sales_db.dump

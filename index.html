@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ACS · 海外市场情报库 · 车辆销售数据</title>
+<style>
+:root{
+  --ink:#0a0e27;
+  --brand:#1a237e;
+  --brand-mid:#283593;
+  --brand-soft:#e8eaf6;
+  --gold:#c5a059;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --radius-lg:16px;
+  --radius-md:12px;
+  --shadow-soft:0 4px 24px rgba(13,14,39,.08);
+  --shadow-lift:0 12px 40px rgba(26,35,126,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  background:linear-gradient(180deg,#eef1f8 0%,#f4f5f7 32%,#e8ecf4 100%);
+  color:#222;
+  font-size:15px;
+  line-height:1.55;
+  min-height:100vh;
+  position:relative;
+}
+body > *{position:relative;z-index:1}
+
+header.page-head{
+  background:linear-gradient(125deg,#060818 0%,var(--brand) 42%,var(--brand-mid) 88%);
+  color:#fff;
+  box-shadow:0 8px 32px rgba(6,8,24,.35);
+  border-bottom:3px solid var(--gold);
+  margin-bottom:20px;
+}
+.page-head-inner{
+  max-width:1180px;
+  margin:0 auto;
+  padding:18px 20px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.brand-lockup{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  min-width:0;
+}
+.brand-logo-wrap{
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 14px;
+  background:rgba(255,255,255,.97);
+  border-radius:12px;
+  box-shadow:0 2px 12px rgba(0,0,0,.12);
+}
+.brand-logo{
+  display:block;
+  height:44px;
+  width:auto;
+  max-width:min(200px,42vw);
+  object-fit:contain;
+}
+.brand-text{min-width:0}
+header.page-head h1{
+  font-size:clamp(1.1rem,2.6vw,1.5rem);
+  font-weight:800;
+  color:#fff;
+  letter-spacing:.02em;
+  text-shadow:0 1px 2px rgba(0,0,0,.2);
+}
+header.page-head .sub{
+  font-size:0.82rem;
+  color:rgba(255,255,255,.82);
+  margin-top:6px;
+  white-space:nowrap;
+  max-width:none;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:2px;
+}
+.head-deco{
+  flex-shrink:0;
+  opacity:.92;
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,.25));
+}
+.head-deco img{
+  display:block;
+  height:clamp(40px,8vw,64px);
+  width:auto;
+  object-fit:contain;
+  filter:brightness(0) invert(1);
+}
+
+.map-shell{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 16px 28px;
+  position:relative;
+}
+.map-frame{
+  position:relative;
+  border-radius:var(--radius-lg);
+  padding:2px;
+  background:linear-gradient(145deg,rgba(197,160,89,.55),rgba(26,35,126,.25),rgba(255,255,255,.4));
+  box-shadow:var(--shadow-lift);
+}
+#map{
+  width:100%;
+  height:auto;
+  display:block;
+  background:linear-gradient(165deg,#e2e9f2 0%,#d4dde8 50%,#c9d5e3 100%);
+  border-radius:calc(var(--radius-lg) - 2px);
+  touch-action:none;
+}
+path.country{stroke:#fff;stroke-width:0.35;vector-effect:non-scaling-stroke;transition:opacity .18s,filter .18s}
+path.country.is--muted{pointer-events:none}
+.legend{
+  position:absolute;
+  left:18px;
+  bottom:16px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  padding:12px 14px;
+  border-radius:var(--radius-md);
+  font-size:0.72rem;
+  box-shadow:var(--shadow-soft);
+  border:1px solid rgba(26,35,126,.1);
+  max-width:min(360px,92vw);
+}
+.legend h3{
+  font-size:0.78rem;
+  color:var(--brand);
+  margin-bottom:10px;
+  font-weight:800;
+}
+.legend-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:4px 10px}
+button.legend-item{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:#374151;
+  font:inherit;
+  font-size:inherit;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  text-align:left;
+  padding:5px 8px;
+  margin:0;
+  width:100%;
+  border-radius:8px;
+  transition:background .12s,color .12s;
+}
+button.legend-item:hover{background:rgba(26,35,126,.08);color:var(--brand)}
+button.legend-item:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+.legend-swatch{width:12px;height:12px;border-radius:4px;flex-shrink:0;border:1px solid rgba(0,0,0,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.35);pointer-events:none}
+.legend-item-label{pointer-events:none}
+.region-panel{
+  position:absolute;
+  top:16px;
+  right:16px;
+  width:min(300px,calc(100% - 32px));
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-radius:var(--radius-md);
+  padding:16px 16px 14px;
+  box-shadow:var(--shadow-lift);
+  border:1px solid rgba(26,35,126,.12);
+  display:none;
+  z-index:5;
+}
+.region-panel.is--open{display:block}
+.region-panel h2{
+  font-size:1.08rem;
+  font-weight:800;
+  color:var(--ink);
+  margin-bottom:8px;
+  padding-bottom:8px;
+  border-bottom:2px solid var(--brand-soft);
+}
+.region-panel .hint{font-size:0.74rem;color:var(--muted);line-height:1.5;margin-bottom:12px}
+.region-panel .actions{display:flex;flex-direction:column;gap:10px}
+a.btn-report{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 16px;
+  border-radius:10px;
+  font-weight:800;
+  font-size:0.92rem;
+  text-decoration:none;
+  background:linear-gradient(180deg,var(--brand-mid) 0%,var(--brand) 100%);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 4px 14px rgba(26,35,126,.35);
+  transition:transform .12s,box-shadow .15s,filter .15s;
+}
+a.btn-report:hover{
+  filter:brightness(1.06);
+  transform:translateY(-2px);
+  box-shadow:0 8px 22px rgba(26,35,126,.4);
+}
+button.btn-report[disabled],.btn-report.is--disabled{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 16px;
+  border-radius:10px;
+  font-weight:700;
+  font-size:0.88rem;
+  background:linear-gradient(180deg,#f3f4f8,#e8eaef);
+  color:#8b909e;
+  border:1px dashed #c5c9d4;
+  cursor:not-allowed;
+}
+button.btn-back{
+  margin-top:2px;
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid rgba(26,35,126,.15);
+  background:#fafbff;
+  font-size:0.84rem;
+  font-weight:700;
+  color:var(--brand);
+  cursor:pointer;
+  transition:background .15s,border-color .15s;
+}
+button.btn-back:hover{background:var(--brand-soft);border-color:var(--brand)}
+.region-country-sidebar{
+  position:absolute;
+  top:16px;
+  left:16px;
+  width:min(232px,calc(44vw - 12px));
+  max-height:calc(100% - 32px);
+  overflow:auto;
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-radius:var(--radius-md);
+  padding:14px 14px 12px;
+  box-shadow:var(--shadow-lift);
+  border:1px solid rgba(26,35,126,.1);
+  display:none;
+  z-index:6;
+}
+.region-country-sidebar.is--open{display:block}
+.region-country-sidebar h3{
+  font-size:0.8rem;
+  font-weight:800;
+  color:var(--brand);
+  margin-bottom:10px;
+  line-height:1.35;
+  padding-bottom:8px;
+  border-bottom:2px solid var(--brand-soft);
+}
+.region-country-sidebar ul{list-style:none;padding:0;margin:0}
+.region-country-sidebar li{margin-bottom:6px;font-size:0.78rem;line-height:1.45}
+.region-country-sidebar a.country-list-link{
+  color:var(--brand);
+  font-weight:600;
+  text-decoration:none;
+  border-bottom:1px solid rgba(26,35,126,.35);
+  word-break:break-word;
+  transition:color .12s,border-color .12s;
+}
+.region-country-sidebar a.country-list-link:hover{color:var(--brand-mid);border-bottom-color:var(--brand-mid)}
+.region-country-sidebar button.country-list-pending{
+  background:none;border:none;padding:0;margin:0;font:inherit;
+  color:var(--brand);font-weight:600;text-align:left;cursor:pointer;
+  text-decoration:none;border-bottom:1px dashed rgba(26,35,126,.3);
+  width:100%;word-break:break-word;
+  transition:color .12s;
+}
+.region-country-sidebar button.country-list-pending:hover{color:var(--brand-mid)}
+.region-country-sidebar .pending-tag{color:#6b7280;font-weight:600;text-decoration:none;border:none}
+#tooltip{
+  position:fixed;pointer-events:none;z-index:20;
+  background:linear-gradient(180deg,#252842,#1a1a2e);
+  color:#fff;padding:8px 12px;border-radius:8px;
+  font-size:0.75rem;font-weight:600;
+  opacity:0;transform:translate(-50%,-120%);
+  transition:opacity .1s;
+  white-space:nowrap;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+  border:1px solid rgba(255,255,255,.1);
+}
+#tooltip.is--on{opacity:1}
+#toast{
+  position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:30;
+  background:linear-gradient(180deg,#252842,#1a1a2e);
+  color:#fff;padding:12px 20px;border-radius:12px;
+  font-size:0.82rem;font-weight:600;
+  opacity:0;transition:opacity .22s;
+  max-width:min(420px,92vw);text-align:center;pointer-events:none;
+  box-shadow:0 10px 36px rgba(0,0,0,.3);
+  border:1px solid rgba(255,255,255,.08);
+}
+#toast.is--on{opacity:1}
+
+@media (max-width:720px){
+  .page-head-inner{flex-direction:column;align-items:flex-start}
+  .head-deco{align-self:flex-end;margin-top:-8px}
+  .brand-lockup{width:100%}
+  header.page-head .sub{white-space:normal}
+}
+</style>
+<script type="application/json" id="country-to-region-json">{"100":"欧洲","104":"东南亚","108":"非洲","112":"俄土中东大区","116":"东南亚","120":"非洲","124":"北美","140":"非洲","144":"南亚","148":"非洲","152":"拉美","156":"东亚","158":"东亚","170":"拉美","178":"非洲","180":"非洲","188":"拉美","191":"欧洲","192":"拉美","196":"欧洲","203":"欧洲","204":"非洲","208":"欧洲","214":"拉美","218":"拉美","222":"拉美","226":"非洲","231":"非洲","232":"非洲","233":"欧洲","238":"拉美","242":"大洋洲","246":"欧洲","250":"欧洲","260":"大洋洲","262":"非洲","266":"非洲","268":"俄土中东大区","270":"非洲","275":"俄土中东大区","276":"欧洲","288":"非洲","300":"欧洲","304":"欧洲","320":"拉美","324":"非洲","328":"拉美","332":"拉美","340":"拉美","348":"欧洲","352":"欧洲","356":"南亚","360":"东南亚","364":"俄土中东大区","368":"俄土中东大区","372":"欧洲","376":"俄土中东大区","380":"欧洲","384":"非洲","388":"拉美","392":"东亚","398":"俄土中东大区","400":"俄土中东大区","404":"非洲","408":"东亚","410":"东亚","414":"俄土中东大区","417":"俄土中东大区","418":"东南亚","422":"俄土中东大区","426":"非洲","428":"欧洲","430":"非洲","434":"非洲","440":"欧洲","442":"欧洲","450":"非洲","454":"非洲","458":"东南亚","466":"非洲","478":"非洲","484":"拉美","496":"东亚","498":"欧洲","499":"欧洲","504":"非洲","508":"非洲","512":"俄土中东大区","516":"非洲","524":"南亚","528":"欧洲","540":"大洋洲","548":"大洋洲","554":"大洋洲","558":"拉美","562":"非洲","566":"非洲","578":"欧洲","586":"南亚","591":"拉美","598":"大洋洲","600":"拉美","604":"拉美","608":"东南亚","616":"欧洲","620":"欧洲","624":"非洲","626":"东南亚","630":"拉美","634":"俄土中东大区","642":"欧洲","643":"俄土中东大区","646":"非洲","682":"俄土中东大区","686":"非洲","688":"欧洲","694":"非洲","703":"欧洲","704":"东南亚","705":"欧洲","706":"非洲","710":"非洲","716":"非洲","724":"欧洲","728":"非洲","729":"非洲","732":"非洲","740":"拉美","748":"非洲","752":"欧洲","756":"欧洲","760":"俄土中东大区","762":"俄土中东大区","764":"东南亚","768":"非洲","780":"拉美","784":"俄土中东大区","788":"非洲","792":"俄土中东大区","795":"俄土中东大区","800":"非洲","804":"俄土中东大区","807":"欧洲","818":"俄土中东大区","826":"欧洲","834":"非洲","840":"北美","854":"非洲","858":"拉美","860":"俄土中东大区","862":"拉美","887":"俄土中东大区","894":"非洲","004":"南亚","008":"欧洲","010":null,"012":"非洲","024":"非洲","031":"俄土中东大区","032":"拉美","036":"大洋洲","040":"欧洲","044":"拉美","050":"南亚","051":"俄土中东大区","056":"欧洲","064":"南亚","068":"拉美","070":"欧洲","072":"非洲","076":"拉美","084":"拉美","090":"大洋洲","096":"东南亚"}</script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+</head>
+<body>
+<header class="page-head">
+  <div class="page-head-inner">
+    <div class="brand-lockup">
+      <span class="brand-logo-wrap">
+        <img class="brand-logo" src="素材/LOGO.png" width="200" height="48" alt="CHOHO 征和"/>
+      </span>
+      <div class="brand-text">
+        <h1>ACS · 海外市场情报库 · 车辆销售数据</h1>
+        <p class="sub">点击任一大区放大地图查看报告 · 高亮为已覆盖数据的国家</p>
+      </div>
+    </div>
+    <div class="head-deco" aria-hidden="true">
+      <img src="素材/%E5%8F%91%E5%8A%A8%E6%9C%BA%E9%93%BE%E5%8F%8A%E6%B1%BD%E8%BD%A6%E9%93%BE.png" alt="" decoding="async"/>
+    </div>
+  </div>
+</header>
+
+<div class="map-shell">
+  <div class="map-frame">
+  <aside class="region-country-sidebar" id="regionCountrySidebar" aria-label="本大区已覆盖数据区域">
+    <h3>本大区 · 已覆盖数据区域</h3>
+    <ul id="regionCountryList"></ul>
+  </aside>
+  <svg id="map" viewBox="0 0 960 560" role="img" aria-label="世界地图"></svg>
+  <div class="legend" id="legend">
+    <h3>大区图例</h3>
+    <div class="legend-grid" id="legendGrid"></div>
+  </div>
+  <div class="region-panel" id="regionPanel" aria-live="polite">
+    <h2 id="regionTitle"></h2>
+    <p class="hint" id="regionHint"></p>
+    <div class="actions">
+      <a class="btn-report" id="reportLink" href="#" target="_blank" rel="noopener noreferrer" style="display:none">查看大区报告</a>
+      <button type="button" class="btn-report is--disabled" id="reportDisabled" style="display:none" disabled>报告准备中</button>
+      <button type="button" class="btn-back" id="btnBack">← 返回世界</button>
+    </div>
+  </div>
+  </div>
+</div>
+<div id="tooltip"></div>
+<div id="toast"></div>
+
+<script>
+(function () {
+  const COUNTRY_TO_REGION = JSON.parse(document.getElementById("country-to-region-json").textContent);
+
+  const OMI = "Overseas Market Intelligence/";
+  const REGION_COLORS = {
+    "拉美": "#fb8c00",
+    "北美": "#e53935",
+    "欧洲": "#1e88e5",
+    "东亚": "#fbc02d",
+    "东南亚": "#26a69a",
+    "南亚": "#f4511e",
+    "非洲": "#43a047",
+    "俄土中东大区": "#8e24aa",
+    "大洋洲": "#00acc1",
+  };
+
+  const REGION_ORDER = ["拉美", "北美", "欧洲", "东亚", "东南亚", "南亚", "非洲", "俄土中东大区", "大洋洲"];
+
+  const REGION_REPORTS = {
+    "拉美": OMI + "拉美市场报告.html",
+    "欧洲": OMI + "欧洲市场报告.html",
+    "俄土中东大区": OMI + "土俄中东大区报告.html",
+    "北美": null,
+    "东亚": null,
+    "东南亚": null,
+    "南亚": null,
+    "非洲": null,
+    "大洋洲": null,
+  };
+
+  const DATA_IDS = [
+    "484", "076", "032", "152", "170", "858", "862", "604", "630",
+    "840", "124",
+    "208", "100", "191", "348", "442", "300", "276", "380", "578", "203", "703", "705", "056", "250", "616", "040", "233", "752", "756", "528", "246", "826", "372", "620", "724", "642", "807",
+    "643", "792", "804", "112", "398", "860", "364", "376", "682", "784", "414", "512", "818",
+    "156", "158", "392", "410",
+    "764", "704", "458", "360", "608", "104", "418", "702",
+    "356", "586",
+    "710",
+    "036", "554",
+  ];
+  const DATA_COUNTRIES = new Set(DATA_IDS);
+
+  const COUNTRY_DISPLAY = {
+    "484": "Mexico", "076": "Brazil", "032": "Argentina", "152": "Chile", "170": "Colombia", "858": "Uruguay", "862": "Venezuela", "604": "Peru", "630": "Puerto Rico",
+    "840": "United States", "124": "Canada",
+    "208": "Denmark", "100": "Bulgaria", "191": "Croatia", "348": "Hungary", "442": "Luxembourg", "300": "Greece", "276": "Germany", "380": "Italy", "578": "Norway", "203": "Czechia", "703": "Slovakia", "705": "Slovenia", "056": "Belgium", "250": "France", "616": "Poland", "040": "Austria", "233": "Estonia", "752": "Sweden", "756": "Switzerland", "528": "Netherlands", "246": "Finland", "826": "United Kingdom", "372": "Ireland", "620": "Portugal", "724": "Spain", "642": "Romania", "807": "North Macedonia",
+    "643": "Russia", "792": "Turkey", "804": "Ukraine", "112": "Belarus", "398": "Kazakhstan", "860": "Uzbekistan", "364": "Iran", "376": "Israel", "682": "Saudi Arabia", "784": "United Arab Emirates", "414": "Kuwait", "512": "Oman", "818": "Egypt",
+    "156": "China", "158": "Taiwan", "392": "Japan", "410": "South Korea",
+    "764": "Thailand", "704": "Vietnam", "458": "Malaysia", "360": "Indonesia", "608": "Philippines", "104": "Myanmar", "418": "Laos", "702": "Singapore",
+    "356": "India", "586": "Pakistan",
+    "710": "South Africa",
+    "036": "Australia", "554": "New Zealand",
+  };
+
+  const COUNTRY_DISPLAY_ZH = {
+    "484": "墨西哥", "076": "巴西", "032": "阿根廷", "152": "智利", "170": "哥伦比亚", "858": "乌拉圭", "862": "委内瑞拉", "604": "秘鲁", "630": "波多黎各",
+    "840": "美国", "124": "加拿大",
+    "208": "丹麦", "100": "保加利亚", "191": "克罗地亚", "348": "匈牙利", "442": "卢森堡", "300": "希腊", "276": "德国", "380": "意大利", "578": "挪威", "203": "捷克", "703": "斯洛伐克", "705": "斯洛文尼亚", "056": "比利时", "250": "法国", "616": "波兰", "040": "奥地利", "233": "爱沙尼亚", "752": "瑞典", "756": "瑞士", "528": "荷兰", "246": "芬兰", "826": "英国", "372": "爱尔兰", "620": "葡萄牙", "724": "西班牙", "642": "罗马尼亚", "807": "北马其顿",
+    "643": "俄罗斯", "792": "土耳其", "804": "乌克兰", "112": "白俄罗斯", "398": "哈萨克斯坦", "860": "乌兹别克斯坦", "364": "伊朗", "376": "以色列", "682": "沙特阿拉伯", "784": "阿联酋", "414": "科威特", "512": "阿曼", "818": "埃及",
+    "156": "中国", "158": "台湾", "392": "日本", "410": "韩国",
+    "764": "泰国", "704": "越南", "458": "马来西亚", "360": "印度尼西亚", "608": "菲律宾", "104": "缅甸", "418": "老挝", "702": "新加坡",
+    "356": "印度", "586": "巴基斯坦",
+    "710": "南非",
+    "036": "澳大利亚", "554": "新西兰",
+  };
+
+  function countryListLabel(id) {
+    const en = COUNTRY_DISPLAY[id] || id;
+    const zh = COUNTRY_DISPLAY_ZH[id];
+    return zh ? en + " " + zh : en;
+  }
+
+  const COUNTRY_DASHBOARDS = {
+    "076": OMI + "brazil-tc-parc-dashboard.html",
+    "484": OMI + "mexico-tc-parc-dashboard.html",
+  };
+
+  const FILL_REGION_NO_DATA = "#bbdefb";
+
+  const width = 960;
+  const height = 560;
+
+  function countryId(f) {
+    if (f.id == null || f.id === "") return null;
+    return String(f.id).padStart(3, "0");
+  }
+
+  function getRegion(f) {
+    const id = countryId(f);
+    if (id != null) return COUNTRY_TO_REGION[id];
+    const n = f.properties && f.properties.name;
+    if (n === "N. Cyprus") return "俄土中东大区";
+    if (n === "Somaliland") return "非洲";
+    if (n === "Kosovo") return "欧洲";
+    return null;
+  }
+
+  function showToast(msg) {
+    const el = document.getElementById("toast");
+    el.textContent = msg;
+    el.classList.add("is--on");
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(function () { el.classList.remove("is--on"); }, 2400);
+  }
+
+  const svg = d3.select("#map");
+  const g = svg.append("g").attr("class", "map-inner");
+  const tooltip = document.getElementById("tooltip");
+  const regionPanel = document.getElementById("regionPanel");
+  const regionTitle = document.getElementById("regionTitle");
+  const regionHint = document.getElementById("regionHint");
+  const reportLink = document.getElementById("reportLink");
+  const reportDisabled = document.getElementById("reportDisabled");
+  const btnBack = document.getElementById("btnBack");
+  const regionCountrySidebar = document.getElementById("regionCountrySidebar");
+  const regionCountryList = document.getElementById("regionCountryList");
+  const legendGrid = document.getElementById("legendGrid");
+
+  const projection = d3.geoNaturalEarth1();
+  const path = d3.geoPath(projection);
+  let countries;
+  let currentMode = "world";
+  let selectedRegion = null;
+
+  const zoom = d3
+    .zoom()
+    .scaleExtent([1, 22])
+    .filter(function (event) {
+      if (currentMode === "world") return false;
+      return !event.ctrlKey || event.type !== "wheel";
+    })
+    .on("zoom", function (event) {
+      g.attr("transform", event.transform);
+    });
+  svg.call(zoom);
+
+  function worldFill(d) {
+    const r = getRegion(d);
+    if (r == null) return "#dde3ea";
+    const id = countryId(d);
+    const base = d3.color(REGION_COLORS[r]);
+    if (!base) return "#ccc";
+    const c = base.copy();
+    c.opacity = id && DATA_COUNTRIES.has(id) ? 1 : 0.55;
+    return c.formatRgb();
+  }
+
+  function applyWorldStyle(selection) {
+    selection
+      .attr("fill", worldFill)
+      .attr("class", function (d) {
+        const r = getRegion(d);
+        return "country" + (r == null ? " is--muted" : "");
+      })
+      .style("cursor", function (d) {
+        return getRegion(d) ? "pointer" : "default";
+      });
+  }
+
+  function applyRegionStyle(selection, region) {
+    selection
+      .attr("class", function (d) {
+        const r = getRegion(d);
+        const muted = r !== region ? " country is--muted" : " country";
+        return muted;
+      })
+      .attr("fill", function (d) {
+        const r = getRegion(d);
+        if (r !== region) return "#eceff4";
+        const id = countryId(d);
+        if (id && DATA_COUNTRIES.has(id)) return "#1a237e";
+        return FILL_REGION_NO_DATA;
+      })
+      .style("cursor", function (d) {
+        const r = getRegion(d);
+        if (r !== region) return "default";
+        const id = countryId(d);
+        return id && DATA_COUNTRIES.has(id) ? "pointer" : "default";
+      });
+  }
+
+  function boundsTransform(bounds, maxK) {
+    const dx = bounds[1][0] - bounds[0][0];
+    const dy = bounds[1][1] - bounds[0][1];
+    const x = (bounds[0][0] + bounds[1][0]) / 2;
+    const y = (bounds[0][1] + bounds[1][1]) / 2;
+    let k = 0.88 / Math.max(dx / width, dy / height, 1e-6);
+    if (k > maxK) k = maxK;
+    return d3.zoomIdentity.translate(width / 2 - k * x, height / 2 - k * y).scale(k);
+  }
+
+  function enterRegion(region) {
+    selectedRegion = region;
+    currentMode = "region";
+    const feats = countries.features.filter(function (f) { return getRegion(f) === region; });
+    if (!feats.length) return;
+    const coll = { type: "FeatureCollection", features: feats };
+    const b = path.bounds(coll);
+    const t = boundsTransform(b, 20);
+    g.selectAll("path.country").call(applyRegionStyle, region);
+    svg.transition().duration(900).ease(d3.easeCubicOut).call(zoom.transform, t);
+
+    regionTitle.textContent = region;
+    regionHint.textContent = "深蓝色为已覆盖数据的国家；浅蓝色为同大区暂无数据的国家。";
+    renderRegionCountryList(region);
+    const href = REGION_REPORTS[region];
+    if (href) {
+      reportLink.href = href;
+      reportLink.style.display = "inline-flex";
+      reportDisabled.style.display = "none";
+    } else {
+      reportLink.style.display = "none";
+      reportDisabled.style.display = "inline-flex";
+    }
+    regionPanel.classList.add("is--open");
+    document.getElementById("legend").style.opacity = "0.35";
+  }
+
+  function renderRegionCountryList(region) {
+    regionCountryList.innerHTML = "";
+    const rows = [];
+    const seen = new Set();
+    countries.features.forEach(function (f) {
+      const id = countryId(f);
+      if (!id || !DATA_COUNTRIES.has(id)) return;
+      if (getRegion(f) !== region) return;
+      if (seen.has(id)) return;
+      seen.add(id);
+      rows.push({
+        id: id,
+        nameEn: COUNTRY_DISPLAY[id] || id,
+        label: countryListLabel(id),
+      });
+    });
+    if (region === "东南亚" && DATA_COUNTRIES.has("702") && !seen.has("702")) {
+      rows.push({
+        id: "702",
+        nameEn: COUNTRY_DISPLAY["702"],
+        label: countryListLabel("702"),
+      });
+    }
+    rows.sort(function (a, b) {
+      return a.nameEn.localeCompare(b.nameEn, "en");
+    });
+    rows.forEach(function (row) {
+      const li = document.createElement("li");
+      const url = COUNTRY_DASHBOARDS[row.id];
+      if (url) {
+        const a = document.createElement("a");
+        a.className = "country-list-link";
+        a.href = url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = row.label;
+        li.appendChild(a);
+      } else {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "country-list-pending";
+        btn.innerHTML =
+          row.label + ' <span class="pending-tag">(报告准备中)</span>';
+        btn.addEventListener("click", function () {
+          showToast("该国单品报告 / 仪表盘尚未发布（报告准备中）");
+        });
+        li.appendChild(btn);
+      }
+      regionCountryList.appendChild(li);
+    });
+    regionCountrySidebar.classList.add("is--open");
+  }
+
+  function exitRegion() {
+    selectedRegion = null;
+    currentMode = "world";
+    regionPanel.classList.remove("is--open");
+    regionCountrySidebar.classList.remove("is--open");
+    regionCountryList.innerHTML = "";
+    document.getElementById("legend").style.opacity = "1";
+    g.selectAll("path.country").call(applyWorldStyle);
+    svg.transition().duration(700).ease(d3.easeCubicInOut).call(zoom.transform, d3.zoomIdentity);
+  }
+
+  function onCountryClick(event, d) {
+    const region = getRegion(d);
+    if (!region) return;
+    event.stopPropagation();
+    if (currentMode === "world") {
+      enterRegion(region);
+      return;
+    }
+    if (currentMode === "region" && region === selectedRegion) {
+      const id = countryId(d);
+      if (!id || !DATA_COUNTRIES.has(id)) return;
+      const url = COUNTRY_DASHBOARDS[id];
+      if (url) window.open(url, "_blank", "noopener,noreferrer");
+      else showToast("该国单品仪表盘尚未发布（报告准备中）");
+    }
+  }
+
+  function onCountryMove(event, d) {
+    const r = getRegion(d);
+    if (!r || currentMode !== "world") {
+      tooltip.classList.remove("is--on");
+      return;
+    }
+    tooltip.textContent = r;
+    tooltip.style.left = event.clientX + "px";
+    tooltip.style.top = event.clientY + "px";
+    tooltip.classList.add("is--on");
+  }
+
+  function onCountryLeave() {
+    tooltip.classList.remove("is--on");
+  }
+
+  btnBack.addEventListener("click", exitRegion);
+
+  Promise.all([
+    d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"),
+  ]).then(function (results) {
+    const world = results[0];
+    countries = topojson.feature(world, world.objects.countries);
+    const landOnly = {
+      type: "FeatureCollection",
+      features: countries.features.filter(function (f) { return getRegion(f) != null; }),
+    };
+    projection.fitExtent([[12, 10], [width - 12, height - 8]], landOnly);
+
+    g.selectAll("path.country")
+      .data(countries.features, function (d) { return countryId(d) || d.properties.name; })
+      .join("path")
+      .attr("class", "country")
+      .attr("d", path)
+      .call(applyWorldStyle)
+      .on("click", onCountryClick)
+      .on("mousemove", onCountryMove)
+      .on("mouseleave", onCountryLeave);
+
+    legendGrid.innerHTML = "";
+    REGION_ORDER.forEach(function (name) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "legend-item";
+      btn.setAttribute("aria-label", "进入大区：" + name);
+      const sw = document.createElement("span");
+      sw.className = "legend-swatch";
+      sw.setAttribute("aria-hidden", "true");
+      sw.style.background = REGION_COLORS[name];
+      const lab = document.createElement("span");
+      lab.className = "legend-item-label";
+      lab.textContent = name;
+      btn.appendChild(sw);
+      btn.appendChild(lab);
+      btn.addEventListener("click", function () {
+        enterRegion(name);
+      });
+      legendGrid.appendChild(btn);
+    });
+  }).catch(function (e) {
+    console.error(e);
+    showToast("地图数据加载失败，请检查网络或使用本地 HTTP 服务打开本页");
+  });
+})();
+</script>
+</body>
+</html>

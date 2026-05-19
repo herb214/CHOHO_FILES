@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>拉美三国正时链售后市场综合分析 · 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:#f4f5f7;color:#222;font-size:14px;line-height:1.5}
+.page{max-width:1200px;margin:0 auto;padding:16px 12px}
+h1{font-size:1.4rem;font-weight:800;color:#1a1a2e;margin-bottom:4px}
+h2{font-size:1.05rem;font-weight:700;color:#1a237e;margin:24px 0 10px;padding-bottom:4px;border-bottom:2px solid #e3e8f0}
+h3{font-size:0.9rem;font-weight:700;color:#333;margin:12px 0 6px}
+.intro{font-size:0.7rem;color:#888;margin-bottom:16px;line-height:1.6}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+@media(max-width:900px){.grid-4{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}
+.card{background:#fff;border-radius:8px;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.kpi-card{background:#fff;border-radius:8px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.08);text-align:center}
+.kpi-val{font-size:1.6rem;font-weight:800;color:#1a237e;line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi-label{font-size:0.68rem;color:#888;margin-top:3px}
+.big-num{font-size:2rem;font-weight:800;color:#1a237e;font-variant-numeric:tabular-nums;line-height:1}
+/* Tier colors */
+.tier-s{background-color:#e8f5e9}
+.tier-a{background-color:#e3f2fd}
+.tier-b{background-color:#fff8e1}
+.tier-c{background-color:#fff}
+/* Pills */
+.pill{display:inline-block;padding:1px 8px;border-radius:10px;font-size:0.72rem;font-weight:700}
+.pill.tier-s{background:#c8e6c9;color:#1b5e20}
+.pill.tier-a{background:#bbdefb;color:#0d47a1}
+.pill.tier-b{background:#fff9c4;color:#f57f17}
+.pill.tier-c{background:#f5f5f5;color:#757575}
+/* Badges */
+.badge{display:inline-block;padding:1px 6px;border-radius:4px;font-size:0.68rem;font-weight:600}
+.badge-high{background:#fce4ec;color:#b71c1c}
+.badge-med{background:#e3f2fd;color:#0d47a1}
+.badge-low{background:#f5f5f5;color:#757575}
+/* Table */
+.main-table{width:100%;border-collapse:collapse;font-size:0.8rem;table-layout:auto}
+.main-table th{background:#1a237e;color:#fff;padding:8px 6px;text-align:center;font-weight:600;font-size:0.72rem;vertical-align:middle}
+.main-table th .th-main{display:block;line-height:1.05}
+.main-table th .th-sub{display:block;font-size:0.64rem;line-height:1.05;opacity:0.9;margin-top:2px}
+.main-table td{padding:7px 6px;border-bottom:1px solid #eef0f2;vertical-align:middle;text-align:center}
+.main-table .num{text-align:center;font-variant-numeric:tabular-nums}
+.main-table .bold{font-weight:700}
+.main-table .rank{font-weight:700;color:#888;text-align:center;width:32px;white-space:nowrap}
+.main-table tr.tier-s td{background:#e8f5e9}
+.main-table tr.tier-a td{background:#e3f2fd}
+.main-table tr.tier-b td{background:#fff8e1}
+.main-table tr.tier-c td{background:#fff}
+.main-table th.col-models,.main-table td.col-models{text-align:center}
+.main-table th.col-models{width:18%;min-width:10rem}
+.main-table td.col-models{line-height:1.45}
+.main-table td.col-models small{display:block;white-space:normal;word-break:break-word;overflow-wrap:anywhere;line-height:1.45;color:#444;font-size:0.74rem;text-align:center}
+.main-table th:nth-child(9), .main-table td:nth-child(9){white-space:nowrap;text-align:center;width:4.5rem;min-width:4.5rem;padding-left:4px;padding-right:4px}
+/* Decision box */
+.decision-box{background:#1a237e;color:#fff;border-radius:8px;padding:16px 20px;margin-bottom:16px}
+.decision-box h2{color:#fff;border-bottom:1px solid rgba(255,255,255,0.3);font-size:1rem}
+.decision-batch{margin-top:10px}
+.batch-label{font-size:0.75rem;font-weight:700;color:#90caf9;margin-bottom:4px}
+.batch-items{font-size:0.82rem;color:#e3f2fd}
+.hero-num{font-size:1.15rem;font-weight:800;color:#fff}
+.obs-item{background:#fff;border-radius:6px;padding:10px 14px;margin-bottom:8px;border-left:4px solid #1976d2;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.obs-title{font-weight:700;font-size:0.85rem;margin-bottom:3px}
+.obs-body{font-size:0.78rem;color:#555}
+.footer{margin-top:24px;padding:14px 0;border-top:1px solid #dde1e7;font-size:0.65rem;color:#aaa;line-height:1.8}
+svg text{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+@media print{body{background:#fff}.card{box-shadow:none;border:1px solid #e0e0e0}break-inside:avoid}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- 1. 口径说明 -->
+<h1>拉美三国(巴墨阿) · 正时链售后市场综合分析</h1>
+<div class="intro">
+  本轮未纳入二手挂牌里程。排名仅包含链条与链带混合车型。<br>
+  跨国合并以「品牌 + 主导发动机家族」为主；※ 仅用于「皮带 + 链条」并存的 model 提示。
+</div>
+
+<!-- 2. 决策卡 -->
+<div class="decision-box">
+  <h2 style="margin-top:0">结论 · 拉美三国正时链售后件优先机型</h2>
+  <div style="font-size:0.85rem;color:#e3f2fd;margin-top:8px">三国 2025 年链条新车上牌合计 <span class="hero-num">2,365,362</span> 台 · 平均链条占比 60.4%。跨国 family Top10 维修热区合计 <span class="hero-num">6,009,487</span> 台。</div>
+  <div class="decision-batch" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+    <div style="background:rgba(255,255,255,0.1);border-radius:6px;padding:10px">
+      <div class="batch-label">TOP 5</div>
+      <div class="batch-items">Nissan HR 主线（Versa / March / Sentra）<br>Hyundai Kappa/Gamma（HB20 张紧器 高易损）<br>Toyota GD diesel 皮卡（Hilux 柴油机）<br>Honda L15B（HR-V / Civic / Fit）<br>VAG EA888（BR Tiguan / Jetta GLI 我厂明星单品）</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.1);border-radius:6px;padding:10px">
+      <div class="batch-label">TOP 6-10</div>
+      <div class="batch-items">Toyota ZR/AR family（Corolla · RAV4）<br>Renault SCe/TCe（Sandero · Duster）<br>Jeep Tigershark / GSE-T4（Renegade · Compass）<br>Fiat Firefly GSE（Argo · Mobi）<br>Toyota NR family（Yaris · Avanza）</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. 年度链条份额趋势 -->
+<h2>三国链条占比年度趋势（2016–2025）</h2>
+<div class="card" style="margin-bottom:16px;padding:14px">
+  <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;height:220px">
+  <line x1="50" y1="148.0" x2="680" y2="148.0" stroke="#e0e0e0" stroke-width="1"/><text x="46" y="148.0" fill="#999" font-size="10" text-anchor="end" dominant-baseline="middle">40%</text><line x1="50" y1="116.0" x2="680" y2="116.0" stroke="#e0e0e0" stroke-width="1"/><text x="46" y="116.0" fill="#999" font-size="10" text-anchor="end" dominant-baseline="middle">50%</text><line x1="50" y1="84.0" x2="680" y2="84.0" stroke="#e0e0e0" stroke-width="1"/><text x="46" y="84.0" fill="#999" font-size="10" text-anchor="end" dominant-baseline="middle">60%</text><line x1="50" y1="52.0" x2="680" y2="52.0" stroke="#e0e0e0" stroke-width="1"/><text x="46" y="52.0" fill="#999" font-size="10" text-anchor="end" dominant-baseline="middle">70%</text>
+  <text x="50.0" y="196" fill="#999" font-size="10" text-anchor="middle">2016</text><text x="190.0" y="196" fill="#999" font-size="10" text-anchor="middle">2018</text><text x="330.0" y="196" fill="#999" font-size="10" text-anchor="middle">2020</text><text x="470.0" y="196" fill="#999" font-size="10" text-anchor="middle">2022</text><text x="610.0" y="196" fill="#999" font-size="10" text-anchor="middle">2024</text><text x="680.0" y="196" fill="#999" font-size="10" text-anchor="middle">2025</text>
+  <polyline points="50.0,156.6 120.0,148.1 190.0,130.9 260.0,86.8 330.0,89.6 400.0,74.6 470.0,82.0 540.0,87.5 610.0,73.8 680.0,79.2" fill="none" stroke="#2196F3" stroke-width="2.5" stroke-linejoin="round"/>
+  <polyline points="50.0,136.4 120.0,120.8 190.0,117.7 260.0,118.8 330.0,118.6 400.0,87.3 470.0,83.9 540.0,90.2 610.0,90.3 680.0,95.2" fill="none" stroke="#4CAF50" stroke-width="2.5" stroke-linejoin="round"/>
+  <polyline points="50.0,111.1 120.0,96.4 190.0,97.5 260.0,88.8 330.0,84.0 400.0,72.5 470.0,75.5 540.0,74.7 610.0,76.4 680.0,74.2" fill="none" stroke="#FF9800" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="50.0" cy="156.6" r="3" fill="#2196F3"/><circle cx="120.0" cy="148.1" r="3" fill="#2196F3"/><circle cx="190.0" cy="130.9" r="3" fill="#2196F3"/><circle cx="260.0" cy="86.8" r="3" fill="#2196F3"/><circle cx="330.0" cy="89.6" r="3" fill="#2196F3"/><circle cx="400.0" cy="74.6" r="3" fill="#2196F3"/><circle cx="470.0" cy="82.0" r="3" fill="#2196F3"/><circle cx="540.0" cy="87.5" r="3" fill="#2196F3"/><circle cx="610.0" cy="73.8" r="3" fill="#2196F3"/><circle cx="680.0" cy="79.2" r="3" fill="#2196F3"/>
+  <circle cx="50.0" cy="136.4" r="3" fill="#4CAF50"/><circle cx="120.0" cy="120.8" r="3" fill="#4CAF50"/><circle cx="190.0" cy="117.7" r="3" fill="#4CAF50"/><circle cx="260.0" cy="118.8" r="3" fill="#4CAF50"/><circle cx="330.0" cy="118.6" r="3" fill="#4CAF50"/><circle cx="400.0" cy="87.3" r="3" fill="#4CAF50"/><circle cx="470.0" cy="83.9" r="3" fill="#4CAF50"/><circle cx="540.0" cy="90.2" r="3" fill="#4CAF50"/><circle cx="610.0" cy="90.3" r="3" fill="#4CAF50"/><circle cx="680.0" cy="95.2" r="3" fill="#4CAF50"/>
+  <circle cx="50.0" cy="111.1" r="3" fill="#FF9800"/><circle cx="120.0" cy="96.4" r="3" fill="#FF9800"/><circle cx="190.0" cy="97.5" r="3" fill="#FF9800"/><circle cx="260.0" cy="88.8" r="3" fill="#FF9800"/><circle cx="330.0" cy="84.0" r="3" fill="#FF9800"/><circle cx="400.0" cy="72.5" r="3" fill="#FF9800"/><circle cx="470.0" cy="75.5" r="3" fill="#FF9800"/><circle cx="540.0" cy="74.7" r="3" fill="#FF9800"/><circle cx="610.0" cy="76.4" r="3" fill="#FF9800"/><circle cx="680.0" cy="74.2" r="3" fill="#FF9800"/>
+  <g transform="translate(175.0,8)">
+    <rect x="0" y="0" width="14" height="3" fill="#2196F3"/>
+    <text x="20" y="2" font-size="11" fill="#555" dominant-baseline="middle">阿根廷 (AR)</text>
+    <rect x="125" y="0" width="14" height="3" fill="#4CAF50"/>
+    <text x="145" y="2" font-size="11" fill="#555" dominant-baseline="middle">巴西 (BR)</text>
+    <rect x="240" y="0" width="14" height="3" fill="#FF9800"/>
+    <text x="260" y="2" font-size="11" fill="#555" dominant-baseline="middle">墨西哥 (MX)</text>
+  </g>
+  <text x="50" y="16" font-size="11" fill="#777">链条占比 %</text>
+</svg>
+  <div style="font-size:0.68rem;color:#aaa;margin-top:4px;text-align:center">纵轴为当年新车上牌中链条车型占比（%）；仅含已映射车型范围内的链/带/湿带口径</div>
+</div>
+
+<!-- 4. KPI 卡 -->
+<div class="grid-4">
+  <div class="kpi-card">
+    <div class="kpi-val">2,365,362</div>
+    <div class="kpi-label">三国 2025 链条新车上牌合计（台）<br>AR 306,930 · BR 1,096,951 · MX 961,481</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-val">60.4%</div>
+    <div class="kpi-label">三国平均链条占比（2025）<br>AR 61.5% · BR 56.5% · MX 63.06%</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-val">15</div>
+    <div class="kpi-label">Top 15 跨国 Engine-family 数<br>（L1 粒度：品牌 + 主导发动机家族）</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-val">6,009,487</div>
+    <div class="kpi-label">Top 10 family 热区合计（MATURE+PRIME）<br>覆盖链条维修窗口核心保有量</div>
+  </div>
+</div>
+
+<!-- 5. TOP 3 跨国 family 卡片 -->
+<h2>Top 3 跨国发动机家族 · 维修热区</h2>
+<div class="grid-3">
+  <div class="card tier-s">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+      <span style="font-size:0.75rem;font-weight:600;color:#888">#1</span>
+      <span class="pill tier-s">S</span> <span class="badge badge-med">MED</span>
+    </div>
+    <div class="big-num">1,574,258</div>
+    <div style="font-size:0.7rem;color:#888;margin-bottom:2px">维修热区台数 (MATURE+PRIME)</div>
+    <div style="font-weight:700;font-size:1rem;margin-bottom:4px">Nissan HR family</div>
+    <div style="font-size:0.75rem;color:#666;margin-bottom:6px">HR12DE / HR16DE · MR18DE / MR18DD</div>
+    <div style="font-size:0.72rem;color:#444;margin-bottom:4px">覆盖国别：MX</div>
+    <div style="font-size:0.72rem;color:#444;margin-bottom:8px">NEAR 段需求在途：410,704 台</div>
+    <div style="font-size:0.72rem;color:#555">MX Nissan Versa: 510,540</div><div style="font-size:0.72rem;color:#555">MX Nissan March: 317,058</div><div style="font-size:0.72rem;color:#555">MX Nissan Sentra: 259,870</div><div style="font-size:0.72rem;color:#555">MX Nissan Tsuru 4 Ptas: 303,826</div><div style="font-size:0.72rem;color:#555">MX Nissan Tiida Sedan: 182,964</div>
+  </div>
+<div class="card tier-s">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+      <span style="font-size:0.75rem;font-weight:600;color:#888">#2</span>
+      <span class="pill tier-s">S</span> <span class="badge badge-med">MED</span>
+    </div>
+    <div class="big-num">966,205</div>
+    <div style="font-size:0.7rem;color:#888;margin-bottom:2px">维修热区台数 (MATURE+PRIME)</div>
+    <div style="font-weight:700;font-size:1rem;margin-bottom:4px">Hyundai Kappa/Gamma</div>
+    <div style="font-size:0.75rem;color:#666;margin-bottom:6px">Kappa 1.0 MPI / 1.0 T-GDI · Gamma 1.6</div>
+    <div style="font-size:0.72rem;color:#444;margin-bottom:4px">覆盖国别：BR</div>
+    <div style="font-size:0.72rem;color:#444;margin-bottom:8px">NEAR 段需求在途：247,015 台</div>
+    <div style="font-size:0.72rem;color:#555">BR HYUNDAI HB20: 707,198</div><div style="font-size:0.72rem;color:#555">BR HYUNDAI HB20S: 259,007</div>
+  </div>
+<div class="card tier-s">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+      <span style="font-size:0.75rem;font-weight:600;color:#888">#3</span>
+      <span class="pill tier-s">S</span> <span class="badge badge-med">MED</span>
+    </div>
+    <div class="big-num">957,526</div>
+    <div style="font-size:0.7rem;color:#888;margin-bottom:2px">维修热区台数 (MATURE+PRIME)</div>
+    <div style="font-weight:700;font-size:1rem;margin-bottom:4px">Honda L15B family</div>
+    <div style="font-size:0.75rem;color:#666;margin-bottom:6px">L15B 1.5 i-VTEC / 1.5T · L13A</div>
+    <div style="font-size:0.72rem;color:#444;margin-bottom:4px">覆盖国别：BR · MX</div>
+    <div style="font-size:0.72rem;color:#444;margin-bottom:8px">NEAR 段需求在途：209,537 台</div>
+    <div style="font-size:0.72rem;color:#555">BR HONDA HR-V: 202,647</div><div style="font-size:0.72rem;color:#555">BR HONDA CIVIC: 290,580</div><div style="font-size:0.72rem;color:#555">BR HONDA FIT: 285,319</div><div style="font-size:0.72rem;color:#555">MX Honda CR-V: 178,980</div>
+  </div>
+</div>
+
+<!-- 6. 核心表：Top 15 engine-family -->
+<h2>核心表：跨国 Engine-Family Top 15 × 车龄段热区</h2>
+<div class="card" style="margin-bottom:16px;overflow-x:auto">
+  <table class="main-table">
+    <thead><tr>
+      <th>#</th>
+      <th>发动机家族</th>
+      <th>覆盖国别</th>
+      <th class="num"><span class="th-main">MATURE</span><span class="th-sub">（2011–2015）</span></th>
+      <th class="num"><span class="th-main">PRIME</span><span class="th-sub">（2016–2018）</span></th>
+      <th class="num">热区合计</th>
+      <th class="num"><span class="th-main">NEAR</span><span class="th-sub">（2019–2020）</span></th>
+      <th class="col-models">主载车型</th>
+      <th>优先级</th>
+      <th>价值</th>
+    </tr></thead>
+    <tbody>
+      <tr class="tier-s">
+      <td class="rank">1</td>
+      <td><strong>Nissan HR family</strong><br><small style="color:#777">HR12DE / HR16DE · MR18DE / MR18DD</small></td>
+      <td>MX</td>
+      <td class="num">906,298</td>
+      <td class="num">667,960</td>
+      <td class="num bold">1,574,258</td>
+      <td class="num">410,704</td>
+      <td class="col-models"><small>MX Versa · March · Sentra · Tiida · Tsuru</small></td>
+      <td><span class="pill tier-s">S</span></td>
+      <td><span class="badge badge-med">MED</span></td>
+    </tr>
+<tr class="tier-s">
+      <td class="rank">2</td>
+      <td><strong>Hyundai Kappa/Gamma</strong><br><small style="color:#777">Kappa 1.0 MPI / 1.0 T-GDI · Gamma 1.6</small></td>
+      <td>BR</td>
+      <td class="num">523,134</td>
+      <td class="num">443,071</td>
+      <td class="num bold">966,205</td>
+      <td class="num">247,015</td>
+      <td class="col-models"><small>BR HB20 · HB20S</small></td>
+      <td><span class="pill tier-s">S</span></td>
+      <td><span class="badge badge-med">MED</span></td>
+    </tr>
+<tr class="tier-s">
+      <td class="rank">3</td>
+      <td><strong>Honda L15B family</strong><br><small style="color:#777">L15B 1.5 i-VTEC / 1.5T · L13A</small></td>
+      <td>BR · MX</td>
+      <td class="num">580,965</td>
+      <td class="num">376,561</td>
+      <td class="num bold">957,526</td>
+      <td class="num">209,537</td>
+      <td class="col-models"><small>BR HR-V · Civic · Fit · MX CR-V</small></td>
+      <td><span class="pill tier-s">S</span></td>
+      <td><span class="badge badge-med">MED</span></td>
+    </tr>
+<tr class="tier-a">
+      <td class="rank">4</td>
+      <td><strong>Toyota ZR/AR family</strong><br><small style="color:#777">2ZR-FE · M20A-FKS · 2AR-FE</small></td>
+      <td>AR · BR · MX</td>
+      <td class="num">409,228</td>
+      <td class="num">292,441</td>
+      <td class="num bold">701,669</td>
+      <td class="num">190,933</td>
+      <td class="col-models"><small>AR/BR/MX Corolla · MX RAV4</small></td>
+      <td><span class="pill tier-a">A</span></td>
+      <td><span class="badge badge-med">MED</span></td>
+    </tr>
+<tr class="tier-a">
+      <td class="rank">5</td>
+      <td><strong>Renault SCe/TCe</strong><br><small style="color:#777">SCe B4D 1.0 / TCe H5Ht 1.3</small></td>
+      <td>BR</td>
+      <td class="num">267,865</td>
+      <td class="num">249,563</td>
+      <td class="num bold">517,428</td>
+      <td class="num">122,213</td>
+      <td class="col-models"><small>BR Sandero · Duster</small></td>
+      <td><span class="pill tier-a">A</span></td>
+      <td><span class="badge badge-med">MED</span></td>
+    </tr>
+<tr class="tier-s">
+      <td class="rank">6</td>
+      <td><strong>Toyota GD diesel</strong><br><small style="color:#777">1GD-FTV 2.8D / 2GD-FTV 2.4D</small></td>
+      <td>AR · BR · MX</td>
+      <td class="num">119,152</td>
+      <td class="num">189,483</td>
+      <td class="num bold">308,635</td>
+      <td class="num">153,204</td>
+      <td class="col-models"><small>AR Hilux · BR Hilux SW4 · MX Hilux</small></td>
+      <td><span class="pill tier-s">S</span></td>
+      <td><span class="badge badge-high">HIGH</span></td>
+    </tr>
+<tr class="tier-a">
+      <td class="rank">7</td>
+      <td><strong>Jeep Tigershark/GSE-T4</strong>※<br><small style="color:#777">1.8 E-torQ / Tigershark 2.4 · GSE-T270 1.3T · 链条约 50%</small></td>
+      <td>BR</td>
+      <td class="num">42,013</td>
+      <td class="num">252,307</td>
+      <td class="num bold">294,320</td>
+      <td class="num">238,918</td>
+      <td class="col-models"><small>BR Renegade · Compass</small></td>
+      <td><span class="pill tier-a">A</span></td>
+      <td><span class="badge badge-med">MED</span></td>
+    </tr>
+<tr class="tier-b">
+      <td class="rank">8</td>
+      <td><strong>GM S-TEC II</strong><br><small style="color:#777">S-TEC II 1.2L 三缸</small></td>
+      <td>MX</td>
+      <td class="num">146,723</td>
+      <td class="num">93,447</td>
+      <td class="num bold">240,170</td>
+      <td class="num">0</td>
+      <td class="col-models"><small>MX Spark（S-TEC II 1.2L）</small></td>
+      <td><span class="pill tier-b">B</span></td>
+      <td><span class="badge badge-low">LOW</span></td>
+    </tr>
+<tr class="tier-a">
+      <td class="rank">9</td>
+      <td><strong>Toyota NR family</strong><br><small style="color:#777">1NR-FE 1.3 / 2NR-FE 1.5</small></td>
+      <td>AR · MX</td>
+      <td class="num">69,459</td>
+      <td class="num">156,389</td>
+      <td class="num bold">225,848</td>
+      <td class="num">109,123</td>
+      <td class="col-models"><small>AR Etios · MX Yaris · MX Avanza</small></td>
+      <td><span class="pill tier-a">A</span></td>
+      <td><span class="badge badge-med">MED</span></td>
+    </tr>
+<tr class="tier-a">
+      <td class="rank">10</td>
+      <td><strong>Fiat Firefly GSE</strong><br><small style="color:#777">FireFly 1.0 / 1.3 / 1.3T GSE</small></td>
+      <td>BR</td>
+      <td class="num">0</td>
+      <td class="num">223,428</td>
+      <td class="num bold">223,428</td>
+      <td class="num">244,998</td>
+      <td class="col-models"><small>BR Argo · Mobi</small></td>
+      <td><span class="pill tier-a">A</span></td>
+      <td><span class="badge badge-med">MED</span></td>
+    </tr>
+<tr class="tier-s">
+      <td class="rank">11</td>
+      <td><strong>VAG EA888</strong>※<br><small style="color:#777">EA888 2.0 TSI（Gen2/Gen3） · 链条约 20%</small></td>
+      <td>AR · BR · MX</td>
+      <td class="num">107,521</td>
+      <td class="num">73,159</td>
+      <td class="num bold">180,680</td>
+      <td class="num">26,198</td>
+      <td class="col-models"><small>BR Tiguan（全计）· BR/MX Jetta（热区按约 20% 估 EA888）</small></td>
+      <td><span class="pill tier-s">S</span></td>
+      <td><span class="badge badge-high">HIGH</span></td>
+    </tr>
+<tr class="tier-a">
+      <td class="rank">12</td>
+      <td><strong>Nissan QR/YS diesel</strong><br><small style="color:#777">YS23DDT / YD25 柴油 · QR25DE 汽油</small></td>
+      <td>MX</td>
+      <td class="num">0</td>
+      <td class="num">165,733</td>
+      <td class="num bold">165,733</td>
+      <td class="num">155,450</td>
+      <td class="col-models"><small>MX NP300（柴油/汽油）</small></td>
+      <td><span class="pill tier-a">A</span></td>
+      <td><span class="badge badge-med">MED</span></td>
+    </tr>
+<tr class="tier-b">
+      <td class="rank">13</td>
+      <td><strong>Ford Dragon/Sigma chain</strong>※<br><small style="color:#777">1.5 Dragon / 1.6 Sigma / 2.0 Duratec · 链条约 50%</small></td>
+      <td>AR</td>
+      <td class="num">45,267</td>
+      <td class="num">117,717</td>
+      <td class="num bold">162,984</td>
+      <td class="num">46,092</td>
+      <td class="col-models"><small>AR EcoSport · Focus</small></td>
+      <td><span class="pill tier-b">B</span></td>
+      <td><span class="badge badge-med">MED</span></td>
+    </tr>
+<tr class="tier-b">
+      <td class="rank">14</td>
+      <td><strong>Nissan QR/VC SUV</strong><br><small style="color:#777">QR25DE / MR20DD / VC-Turbo（近年）</small></td>
+      <td>MX</td>
+      <td class="num">54,283</td>
+      <td class="num">75,294</td>
+      <td class="num bold">129,577</td>
+      <td class="num">28,483</td>
+      <td class="col-models"><small>MX X-Trail（QR25DE / MR20DD / VC-Turbo）</small></td>
+      <td><span class="pill tier-b">B</span></td>
+      <td><span class="badge badge-med">MED</span></td>
+    </tr>
+<tr class="tier-b">
+      <td class="rank">15</td>
+      <td><strong>Mazda SkyActiv-G</strong><br><small style="color:#777">SkyActiv-G 2.0 / 2.5</small></td>
+      <td>MX</td>
+      <td class="num">67,411</td>
+      <td class="num">45,226</td>
+      <td class="num bold">112,637</td>
+      <td class="num">33,756</td>
+      <td class="col-models"><small>MX Mazda 3 Sedan</small></td>
+      <td><span class="pill tier-b">B</span></td>
+      <td><span class="badge badge-med">MED</span></td>
+    </tr>
+    </tbody>
+  </table>
+  <div style="font-size:0.65rem;color:#aaa;margin-top:6px">热区 = MATURE+PRIME（三国同口径）· 参考年 2026 · ※ 仅当 family 估算皮带占比超过 5% 时标示；并展示链条约占比 · 颜色映射：绿 S / 蓝 A / 黄 B / 白 C</div>
+</div>
+
+<!-- 7. 三国紧凑 panel -->
+<h2>三国市场快览</h2>
+<div class="grid-3">
+  <div class="card" style="border-top:4px solid #2196F3">
+    <div style="font-weight:700;font-size:1.1rem;margin-bottom:2px">阿根廷 (AR)</div>
+    <div style="font-size:0.72rem;color:#888;margin-bottom:8px">ACARA 2014–2025</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+      <div style="background:#f8f8f8;border-radius:6px;padding:8px;text-align:center">
+        <div style="font-size:1.4rem;font-weight:700;color:#2196F3">61.5%</div>
+        <div style="font-size:0.68rem;color:#888">2025 链条占比</div>
+      </div>
+      <div style="background:#f8f8f8;border-radius:6px;padding:8px;text-align:center">
+        <div style="font-size:1.1rem;font-weight:700">306,930</div>
+        <div style="font-size:0.68rem;color:#888">2025 链条新车（台）</div>
+      </div>
+    </div>
+    <div style="font-size:0.72rem;font-weight:600;color:#555;margin-bottom:4px">本国决策</div>
+    <div style="font-size:0.78rem;color:#333;margin-bottom:8px">皮卡柴油先行，Etios 高周转补仓</div>
+    <div style="font-size:0.72rem;font-weight:600;color:#555;margin-bottom:4px">Top 3 链条车型</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f0f0f0"><span style="font-size:0.8rem">TOYOTA HILUX</span><span style="font-size:0.75rem"><span class="pill tier-s">S</span> 128,022</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f0f0f0"><span style="font-size:0.8rem">TOYOTA ETIOS</span><span style="font-size:0.75rem"><span class="pill tier-a">A</span> 95,834</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f0f0f0"><span style="font-size:0.8rem">FORD RANGER</span><span style="font-size:0.75rem"><span class="pill tier-a">A</span> 71,154</span></div>
+  </div><div class="card" style="border-top:4px solid #4CAF50">
+    <div style="font-weight:700;font-size:1.1rem;margin-bottom:2px">巴西 (BR)</div>
+    <div style="font-size:0.72rem;color:#888;margin-bottom:8px">Fenabrave 2003–2025</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+      <div style="background:#f8f8f8;border-radius:6px;padding:8px;text-align:center">
+        <div style="font-size:1.4rem;font-weight:700;color:#4CAF50">56.5%</div>
+        <div style="font-size:0.68rem;color:#888">2025 链条占比</div>
+      </div>
+      <div style="background:#f8f8f8;border-radius:6px;padding:8px;text-align:center">
+        <div style="font-size:1.1rem;font-weight:700">1,096,951</div>
+        <div style="font-size:0.68rem;color:#888">2025 链条新车（台）</div>
+      </div>
+    </div>
+    <div style="font-size:0.72rem;font-weight:600;color:#555;margin-bottom:4px">本国决策</div>
+    <div style="font-size:0.78rem;color:#333;margin-bottom:8px">HB20 HB20S 爆款车型; COROLLA紧随其后</div>
+    <div style="font-size:0.72rem;font-weight:600;color:#555;margin-bottom:4px">Top 3 链条车型</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f0f0f0"><span style="font-size:0.8rem">HYUNDAI HB20</span><span style="font-size:0.75rem"><span class="pill tier-s">S</span> 707,198</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f0f0f0"><span style="font-size:0.8rem">TOYOTA COROLLA</span><span style="font-size:0.75rem"><span class="pill tier-s">S</span> 484,227</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f0f0f0"><span style="font-size:0.8rem">JEEP RENEGADE</span><span style="font-size:0.75rem"><span class="pill tier-a">A</span> 175,424</span></div>
+  </div><div class="card" style="border-top:4px solid #FF9800">
+    <div style="font-weight:700;font-size:1.1rem;margin-bottom:2px">墨西哥 (MX)</div>
+    <div style="font-size:0.72rem;color:#888;margin-bottom:8px">INEGI 2010–2026</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+      <div style="background:#f8f8f8;border-radius:6px;padding:8px;text-align:center">
+        <div style="font-size:1.4rem;font-weight:700;color:#FF9800">63.06%</div>
+        <div style="font-size:0.68rem;color:#888">2025 链条占比</div>
+      </div>
+      <div style="background:#f8f8f8;border-radius:6px;padding:8px;text-align:center">
+        <div style="font-size:1.1rem;font-weight:700">961,481</div>
+        <div style="font-size:0.68rem;color:#888">2025 链条新车（台）</div>
+      </div>
+    </div>
+    <div style="font-size:0.72rem;font-weight:600;color:#555;margin-bottom:4px">本国决策</div>
+    <div style="font-size:0.78rem;color:#333;margin-bottom:8px">Nissan HR Family几乎包揽墨西哥热门</div>
+    <div style="font-size:0.72rem;font-weight:600;color:#555;margin-bottom:4px">Top 3 链条车型</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f0f0f0"><span style="font-size:0.8rem">Nissan Versa</span><span style="font-size:0.75rem"><span class="pill tier-s">S</span> 510,540</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f0f0f0"><span style="font-size:0.8rem">Nissan March</span><span style="font-size:0.75rem"><span class="pill tier-a">A</span> 317,058</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f0f0f0"><span style="font-size:0.8rem">Nissan NP300</span><span style="font-size:0.75rem"><span class="pill tier-a">A</span> 165,733</span></div>
+  </div>
+</div>
+
+<!-- 8. 关键观察 -->
+<h2>关键观察</h2>
+<div class="obs-item">
+  <div class="obs-title">Toyota ZR/AR 与 Toyota GD diesel 是唯二覆盖三国的跨国 family</div>
+  <div class="obs-body">Toyota ZR/AR family 与 Toyota GD diesel 是乘用车与皮卡两条「三国同框」核心线。</div>
+</div>
+<div class="obs-item">
+  <div class="obs-title">Nissan HR family 在墨西哥规模压倒性，体量超过其余任何单一 family</div>
+  <div class="obs-body">MX Versa · March · Sentra · Tiida · Tsuru 合计热区超 157 万台，是榜单第一，但目前 100% 集中于墨西哥市场。</div>
+</div>
+<div class="obs-item">
+  <div class="obs-title">BR Hyundai Kappa/Gamma 在巴西规模巨大</div>
+  <div class="obs-body">HB20 / HB20S 合计热区 966,205 台，Gen2 Kappa 1.0 T-GDI 张紧器公知易损。</div>
+</div>
+<div class="obs-item">
+  <div class="obs-title">Toyota GD diesel 柴油链条可能是拉美最高价值的 family</div>
+  <div class="obs-body">单件套装价格与毛利率显著高于乘用车汽油链条；AR Hilux 热区 12.8 万台 + MX 热区 8.9 万台 + BR SW4 热区约 9.2 万台，工况里程高、刚需强，优先建深库存。</div>
+</div>
+<div class="obs-item">
+  <div class="obs-title">VAG EA888 链条必须与 EA211 湿带严格切割</div>
+  <div class="obs-body">VW在拉美走量的更多是EA211, Tiguan, Jetta GLI和部分进口车型搭载了EA888, 预估有二十万根链条的市场。</div>
+</div>
+
+<!-- 9. BOM 代际拆分 -->
+<h2>机型代际拆分（BOM 硬约束）· Top Family 发动机代号</h2>
+<div class="grid-2">
+  <div class="card" style="border-top:3px solid #1976d2">
+    <div style="font-weight:700;font-size:0.95rem;margin-bottom:8px">Toyota GD diesel</div>
+    <div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">1GD-FTV 2.8D</div><div style="font-size:0.73rem;color:#555">AR Hilux SRV/SRX · MX Hilux（柴油主力）· 2015–</div></div><div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">2GD-FTV 2.4D</div><div style="font-size:0.73rem;color:#555">AR Hilux 低配 · BR Hilux SW4 柴油 · 2015–</div></div><div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">2TR-FE 2.7（汽油）</div><div style="font-size:0.73rem;color:#555">部分年款混搭；BOM 与 GD 柴油不通用</div></div>
+  </div><div class="card" style="border-top:3px solid #1976d2">
+    <div style="font-weight:700;font-size:0.95rem;margin-bottom:8px">Nissan HR family</div>
+    <div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">HR16DE</div><div style="font-size:0.73rem;color:#555">MX Versa 2007–2026 · March 2011–2026 · Kicks（主力排量）</div></div><div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">MR18DD</div><div style="font-size:0.73rem;color:#555">MX Versa 2020+（新款）· Sentra（MR18/MR20 系）</div></div><div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">HR12DE</div><div style="font-size:0.73rem;color:#555">MX March 小排量入门版</div></div><div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">QG18DE</div><div style="font-size:0.73rem;color:#555">MX Tsuru（已停产出租车主力，链条套件独立）</div></div>
+  </div><div class="card" style="border-top:3px solid #1976d2">
+    <div style="font-weight:700;font-size:0.95rem;margin-bottom:8px">Toyota ZR/AR family</div>
+    <div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">2ZR-FE / 3ZR-FE</div><div style="font-size:0.73rem;color:#555">10–11 代 Corolla（2008–2019）· AR/BR/MX 同族</div></div><div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">M20A-FKS</div><div style="font-size:0.73rem;color:#555">12 代 Corolla 2.0 NA · AR 2019+ · BR/MX 同步</div></div><div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">2ZR-FXE（HEV）</div><div style="font-size:0.73rem;color:#555">Corolla 混动内燃机侧 1.8；AR/BR 并行</div></div><div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">2AR-FE</div><div style="font-size:0.73rem;color:#555">MX RAV4 2.0 NA（旧款）</div></div><div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">A25A-FXS（HEV）</div><div style="font-size:0.73rem;color:#555">MX RAV4 混动内燃机侧</div></div>
+  </div><div class="card" style="border-top:3px solid #1976d2">
+    <div style="font-weight:700;font-size:0.95rem;margin-bottom:8px">Hyundai Kappa/Gamma</div>
+    <div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">Kappa G3LA / G4LA 1.0 MPI</div><div style="font-size:0.73rem;color:#555">BR HB20/HB20S Gen1 + Gen2 MPI（2012–）</div></div><div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">Kappa G3LC 1.0 T-GDI</div><div style="font-size:0.73rem;color:#555">BR HB20/HB20S Gen2 2019+；张紧器易损风险 HIGH</div></div><div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">Gamma G4FC / G4LC 1.6 MPI</div><div style="font-size:0.73rem;color:#555">BR HB20/HB20S Gen1（2012–）至约 2022</div></div>
+  </div><div class="card" style="border-top:3px solid #1976d2">
+    <div style="font-weight:700;font-size:0.95rem;margin-bottom:8px">VAG EA888</div>
+    <div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">EA888 Gen2 / Gen3 2.0 TSI</div><div style="font-size:0.73rem;color:#555">Tiguan 全计 · BR/MX Jetta 已按 20% 折算（估 EA888 装机）</div></div><div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">同上 / Audi Q3 · A3 · Q5 等</div><div style="font-size:0.73rem;color:#555">长尾车型</div></div>
+  </div><div class="card" style="border-top:3px solid #1976d2">
+    <div style="font-weight:700;font-size:0.95rem;margin-bottom:8px">Jeep Tigershark/GSE-T4</div>
+    <div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">1.8 E-torQ Flex</div><div style="font-size:0.73rem;color:#555">BR Renegade 2015–2021 · Compass 早期；正时链条</div></div><div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">Tigershark 2.0 / 2.4 Flex</div><div style="font-size:0.73rem;color:#555">BR Compass 历史配置</div></div><div style="border-left:3px solid #1976d2;margin:4px 0;padding:4px 8px;background:#f9f9f9;border-radius:0 4px 4px 0"><div style="font-weight:600;font-size:0.8rem">GSE-T270 1.3T Flex</div><div style="font-size:0.73rem;color:#555">BR Renegade 2022+ · Compass 当前主力；已知链条张紧器易损</div></div>
+  </div>
+</div>
+
+<!-- 10. 页脚 -->
+<div class="footer">
+  <strong>数据口径</strong><br>
+  · 阿根廷：ACARA 新车登记 2014–2025（参考年 2025）；无 OVER15 段；不含平行进口与灰色渠道。<br>
+  · 巴西：Fenabrave 2003–2025（参考年 2026）；含 OVER15 段（不进跨国合并）；不含纯电单独统计。<br>
+  · 墨西哥：INEGI 2010–2026（参考年 2026）；unknown 占比约 19.73%（映射待补全）；不含灰色渠道。<br>
+  · 热区 = MATURE（11–15 年段）+ PRIME（8–10 年段），以参考年 2026 为基准。<br>
+  · 跨国 family 合并：Engine-family L1 粒度；※ 脚注仅标示「皮带+链条」并存的 model 行提示，多套链条机并行不标 ※；映射见 <code>调研/engine_family_crosswalk.md</code>。<br>
+  · 价值档位（HIGH / MED / LOW）来自正时映射表业务先验标注，非由销量反推。<br>
+  · 本轮未纳入二手挂牌里程；tier 分级仅基于车龄段保有量与链条置信度。<br>
+  <br>
+  <strong>产出文件</strong>：<code>output/latam_tc_dashboard_data.json</code>（单一真源）· <code>build_latam_aggregation.py</code>（生成脚本）<br>
+</div>
+
+</div>
+</body>
+</html>

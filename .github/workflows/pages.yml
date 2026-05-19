@@ -1,0 +1,65 @@
+# 将海外市场情报库静态站发布到 GitHub Pages（海外访问更快）
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble static site
+        run: |
+          set -e
+          mkdir -p _site/public
+          cp index.html _site/
+          cp -r "素材" _site/
+          cp -r "Overseas Market Intelligence" _site/
+          if [ -d public ]; then cp -r public/* _site/public/; fi
+          if [ -d deploy/public ]; then cp deploy/public/* _site/public/ 2>/dev/null || true; fi
+          touch _site/.nojekyll
+
+      - name: Generate QR (PDF absolute URL on GitHub Pages)
+        run: |
+          pip install 'qrcode[pil]' -q
+          OWNER="${GITHUB_REPOSITORY%/*}"
+          REPO="${GITHUB_REPOSITORY#*/}"
+          PDF_URL="https://${OWNER}.github.io/${REPO}/public/qingdao-zhenghe-sample-2026.pdf"
+          python - <<PY
+          import qrcode
+          url = "${PDF_URL}"
+          qrcode.make(url, box_size=8, border=2).save("_site/public/sample-qr.png")
+          print("QR encodes:", url)
+          PY
+          # Patch sample-qr.html for GitHub Pages (button + visible URL)
+          if [ -f _site/public/sample-qr.html ]; then
+            sed -i "s|http://8.136.202.129/public/qingdao-zhenghe-sample-2026.pdf|${PDF_URL}|g" _site/public/sample-qr.html
+            sed -i 's|href="qingdao-zhenghe-sample-2026.pdf"|href="'"${PDF_URL}"'"|g' _site/public/sample-qr.html
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
